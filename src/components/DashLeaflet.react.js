@@ -250,19 +250,19 @@ export default class DashLeaflet extends Component<{}, State> {
                     {DashLeaflet.loadCircleMarkers(this.props.circleMarkers)}
                 </ReactLeaflet.LayersControl>
             )
-        }
-
+        }  
+        
         return (
             <div id={this.props.id} style={this.props.style}>
                 <ReactLeaflet.Map id='Map'
                     style={{ height: "100%" }}
                     bounds={mapOptions.bounds}
-                    center={mapOptions.center}
+                    center={(mapOptions.center != null) ? mapOptions.center : [0, 0]}
                     minBounds={mapOptions.minBounds}
                     maxBounds={mapOptions.maxBounds}
-                    minZoom={mapOptions.minZoom}
-                    maxZoom={mapOptions.maxZoom}
-                    zoom={mapOptions.zoom}
+                    minZoom={(mapOptions.minZoom != null) ? mapOptions.minZoom : 0}
+                    maxZoom={(mapOptions.maxZoom != null) ? mapOptions.maxZoom : 5}
+                    zoom={(mapOptions.zoom != null) ? mapOptions.zoom : 4}
                 >
                     {layers}
                 </ReactLeaflet.Map>
